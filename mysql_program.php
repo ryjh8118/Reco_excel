@@ -8,12 +8,13 @@ class datasheet{
 	public $age ='age';
 	public $gender ='gender';
 	public $date_time='date_time';
+	//
 
-					//查詢欄位  幾個欄位
+					//查詢欄位  幾筆欄位
 	function search($column,$countnum){
 		return "SELECT $column
 				FROM $this->datasheet 
-				ORDER BY $countnum 
+				ORDER BY $column 
 				DESC LIMIT $countnum";
 	}
 
