@@ -3,7 +3,7 @@ include("PDO_class.php");
 include("mysql_program.php");
 	$mysqldb = new PDOsetting;
 	$mysql_program = new datasheet;
-	echo phpinfo();
+	//echo phpinfo();
 	function debug($getDate){
 		print $getDate.'<br>';
 		print 'age:'.$_GET['age'].'<br>';
@@ -33,6 +33,8 @@ include("mysql_program.php");
 ///查詢////
   $timediff=$mysql_program->search('UNIX_TIMESTAMP(date_time)','1');
   $result=$mysqldb->sql_link()->query($timediff);
+ // fetch(PDO::FETCH_ASSOC) 
+  	//var_dump($result->fetchAll());
   
 	while( $row = $result->fetch(PDO::FETCH_ASSOC)){
 		$contrast_seconds =$row['UNIX_TIMESTAMP(date_time)']; //對比秒數
