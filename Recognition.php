@@ -1,4 +1,5 @@
 <?php   // 本機端
+//ini_set("error_reporting","E_ALL & ~E_NOTICE");
 include("PDO_class.php");
 include("mysql_program.php");
 	$mysqldb = new PDOsetting; //連線建立物件
@@ -19,20 +20,26 @@ include("mysql_program.php");
 		else  //黑色
 			echo ('<br><font ">'.$text.$value.'</font>');
 	}
+	function timestamp($result){
+		$difftime=0;
+		 while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$contrast_seconds =$row['UNIX_TIMESTAMP(date_time)']; //對比秒數
+			$getseconds=time();
+			echo '<br>'.$getseconds;
+			echo '<br>'.$contrast_seconds;
+			$difftime=$getseconds-$contrast_seconds;
+		}
+		return $difftime;
+	}
 ///查詢////
 
 	$timediff=$mysql_program->search('UNIX_TIMESTAMP(date_time)','1');
-    $result=$mysqldb->sql_link()->query($timediff);
+    $result=$mysqldb->sql_link()->query($timediff);   
 
-	while( $row = $result->fetch(PDO::FETCH_ASSOC)){
-		$contrast_seconds =$row['UNIX_TIMESTAMP(date_time)']; //對比秒數
-		color($text='傳入時間：',$value=$getseconds=time());
-		color($text='資料時間：',$value=$contrast_seconds);
-	}	
-
+	//echo '<br>'.timestamp($result).'<br>';
 ///新增資料////////////////////////
-		//目前時間 - 資料庫時間   辨給一秒時間傳送 怕重複資料
-	if ($getseconds-$contrast_seconds>2){
+		//目前時間 - 資料庫時間   給一秒時間傳送 怕重複資料
+	//if (timestamp($result)>2){
 		try {
 			$sql_add = $mysql_program->add_data($humanage,$humangender);
 			$mysqldb->sql_link()->query($sql_add);
@@ -41,7 +48,7 @@ include("mysql_program.php");
 		catch(Exception $e){
 			color('失敗');
 		}
-	}
+	//}
 //////////////////////////////////
 
 ?>
