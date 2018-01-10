@@ -33,7 +33,7 @@ include("mysql_program.php");
 	}
 ///查詢////
 
-	$timediff=$mysql_program->search('UNIX_TIMESTAMP(date_time)','1');
+	$timediff=$mysql_program->search('UNIX_TIMESTAMP(date_time)','1','facereco_list');
     $result=$mysqldb->sql_link()->query($timediff);   
 
 	//echo '<br>'.timestamp($result).'<br>';
@@ -41,7 +41,7 @@ include("mysql_program.php");
 		//目前時間 - 資料庫時間   給一秒時間傳送 怕重複資料
 	if (timestamp($result)>2){
 		try {
-			$sql_add = $mysql_program->add_data($humanage,$humangender);
+			$sql_add = $mysql_program->add_data($humanage,$humangender,'facereco_list');
 			$mysqldb->sql_link()->query($sql_add);
 			color('Success','',$color='1');
 		}
