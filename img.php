@@ -1,4 +1,10 @@
+<body>
+	
+</body>
 <?php   // 本機端
+
+	$num=rand(0,4);
+	echo " <img src=\"img\juice".$num.".jpg\" width=\" 75% \" height=\" 100% \"  >";
 //ini_set("error_reporting","E_ALL & ~E_NOTICE");
 /*
 include("PDO_class.php");
@@ -24,8 +30,9 @@ include("mysql_program.php");
 			echo $photoname[$i]=$row['data_name'].'<br>';
 			$i+=1;
 	}*/
-	$num=rand(0,4);
+
 	//echo $num;
-	echo "<img src=\"img\juice".$num.".jpg\">";
+//<img src="upload/20131017185230.gif" alt="替代文字二" title="範例圖片二" width="100px" height="100px">
+	
 
 ?>
