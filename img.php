@@ -1,10 +1,28 @@
-<body>
-	
-</body>
-<?php   // 本機端
+<head>
+	<style>
+		body{
+		margin:0px;
+		padding:0px;
+		background-color: #FFBB66;
+		background-repeat:no-repeat;
+		background-position:center;
+		background-size:75% 100%;　//設定背景圖片的填滿方式
+		
+		
+		
+		}    
 
+</style>
+</head>
+
+<body>
+	<?php   // 本機端
+//height=\"800px \" width=\"1280px \"
 	$num=rand(0,4);
-	echo " <img src=\"img\juice".$num.".jpg\" width=\" 75% \" height=\" 100% \"  >";
+	echo "<div> <body background=\"img\juice".$num.".jpg\"   ></div>";
+	?>
+</body>
+<!--
 //ini_set("error_reporting","E_ALL & ~E_NOTICE");
 /*
 include("PDO_class.php");
@@ -35,4 +53,5 @@ include("mysql_program.php");
 //<img src="upload/20131017185230.gif" alt="替代文字二" title="範例圖片二" width="100px" height="100px">
 	
 
-?>
+?>-->
+
