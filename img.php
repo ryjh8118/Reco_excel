@@ -7,9 +7,6 @@
 		background-repeat:no-repeat;
 		background-position:center;
 		background-size:75% 100%;　//設定背景圖片的填滿方式
-		
-		
-		
 		}    
 
 </style>

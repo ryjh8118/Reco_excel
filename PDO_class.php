@@ -14,7 +14,7 @@ class PDOsetting{
 	function sql_connect(){
 		try {
 		   $this->sql_link();
-		   //echo "成功建立MySQL伺服器連接和開啟資料庫<br>-----------------------------------<br>"; 
+		   // echo "成功建立MySQL伺服器連接和開啟資料庫<br>-----------------------------------<br>"; 
 
 		} catch (PDOException $e) {
 		   echo "連接失敗: " . $e->getMessage();
