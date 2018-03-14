@@ -6,23 +6,41 @@ include("mysql_program.php");
 	$mysql_program = new datasheet;  //SQL查詢
 ///查詢////
 	//error_reporting(0);  //隱藏所有錯誤訊息
-	$cleanup = 0;
-	$phone = $_GET['phone'];
+	$phone = $_COOKIE['phone'];
+	$myfile = fopen("GetFaceName.php", "w") or die("Unable to open file!");
 
-	$searchphone="SELECT * From ifarm_toa.market_member WHERE `phone` = $phone";    
+	if ($phone != '1'){
+		$searchphone="SELECT * From ifarm_toa.market_member WHERE `phone` = $phone";    
 
-    $result=$mysqldb->sql_link()->query($searchphone);   
-	$name = '';
+		$result=$mysqldb->sql_link()->query($searchphone);   
+		$name = '';
 
-	var_export($row = $result->fetch(PDO::FETCH_ASSOC));
-	$name =$row['name'] ;
+		//var_export($row = $result->fetch(PDO::FETCH_ASSOC)); //抓到的所有值
+		$row = $result->fetch(PDO::FETCH_ASSOC);
+		if ($row['name'] == ''){
+			echo "此手機號碼：".$phone."<br>抱歉！會員資料裡並無此號碼";
+		}else{
+			echo "姓名：".$row['name'].
+				"<br>手機：".$row['phone'].
+				"<br>生日：".$row['birthday'];
+		}
+	////////////////////////////////////////////////////////////////////////////////////
+		
+		
 
-    $myfile = fopen("GetFaceName.txt", "w") or die("Unable to open file!");
-	fwrite($myfile, $name);
-	if ($cleanup == 1){
-		$myfile = fopen("GetFaceName.txt", "w") or die("Unable to open file!");
-		fwrite($myfile, '');
-	}
+
+		$name =$row['name'] ;
+		//echo $name;
+
+		$utf8= '<?php
+				header("Content-Type:text/html; charset=utf-8");
+				?>';
+		fwrite($myfile,$utf8.$name);
+
+
+	//////////////////////////////////////////////////////////////////////////////////
+	}else
+		fwrite($myfile,'none');
 	fclose($myfile);
 
 ///////////////偵錯
