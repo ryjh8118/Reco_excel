@@ -35,7 +35,6 @@ include("mysql_program.php");
 				$utf8= '<?php
 					header("Content-Type:text/html; charset=utf-8");?>';
 				fwrite($myfile,$utf8.$name);
-
 						//////////////////////////////////////////////////////////////////////////////////
 			}
     
@@ -50,7 +49,9 @@ include("mysql_program.php");
 		 ?> 正確">
 
 		<input type="button" value="這不是我的資料" onclick="location.href='CameraFaceRecoName.php'">
-
+		<?php 	if($enter == 'true')
+				echo '<br>輸入成功，請稍等';
+ 		 ?>
 	</form>
 	
 

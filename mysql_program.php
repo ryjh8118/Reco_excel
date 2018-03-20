@@ -16,6 +16,14 @@ class datasheet{
 				DESC LIMIT $countnum";
 	}
 
+	function product($column,$where,$sheetname,$dbname){
+		return "SELECT $column
+				FROM $dbname.$sheetname
+				Where $column=$where 
+				ORDER BY $column";
+
+	}
+
 				//新增資料 pepper傳過來
 	function add_data($age,$gender,$sheetname,$dbname){
 		return "INSERT INTO $sheetname 
