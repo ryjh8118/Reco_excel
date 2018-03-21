@@ -5,17 +5,18 @@
 <title>無標題文件</title>
 
 
-</head>
-
+</head><center>
+<table border="10" >
+<td>
 <body><form method="POST">
-	<h1><font face="標楷體">說不定我會認識你唷</font></h1>
-	<br>
-	<font face="微軟正黑體">
-	    <label for="phone">電話：</label>　
+	<h1><font face="標楷體">　　說不定我會認識你唷　　</font></h1>
+	<hr>
+	<font face="微軟正黑體"><br>
+	 <center><label for="phone">電話</label>
 	<input type="tel" id="phone" name="phone" value="09">
 
-	<input type="submit" name="button" id="button" value="送出" >
-
+	<input type="submit" name="button" id="button" value="送出" >　</center>
+	<br><br><hr>
 <?php
 ini_set("error_reporting","E_ALL & ~E_NOTICE");
 $phone = $_POST['phone'];
@@ -31,13 +32,12 @@ if (preg_match($regex,$phone)) {
 }
 
 else if($phone==NULL)
-	echo '<br><br><br>請輸入手機號碼，共十碼';
+	echo '<center><br>請輸入手機號碼，共十碼<br><br>';
 else
 	echo '<br><br><font color="red"> <h1>輸入錯誤 </h1></font><br><br>剛剛輸入號碼為：'.$phone.'</font>';
 //	var_dump($phone);
-?>
-
-</form>
+?></form>
+</td></table></center>
 	
 	
 </body>

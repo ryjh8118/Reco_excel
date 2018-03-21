@@ -24,14 +24,6 @@ include("mysql_program.php");
 					$order = $row['orderID']; 
 				else
 					break;
-				/* 偵錯用
-				if ($row['orderID'] != $order){
-					echo '----------不同訂單--------------<br>';
-					echo '花費：'.$row['bill'].'<br>';
-					echo '訂單：'.$row['orderID'].'<br>';
-					echo '姓名：'.$row['peoplename'].'<br>產品：';
-				}  */
-				//篩選不是產品
 				if (strpos($row['name'],'調整')!=false or strpos($row['name'],'折扣') !=false )
 				 	echo '';
 				 else{
@@ -49,3 +41,12 @@ include("mysql_program.php");
 			
 
 ?>
+
+<!-- 查詢熱門商品 
+$sql = "select `fproduct`.`name`,COUNT(name)\n"
+
+    . "from `qibilldetail`,`fproduct`\n"
+
+    . "where `fproduct`.`pid`=`qibilldetail`.`product_id`\n"
+
+    . "GROUP BY `qibilldetail`.`product_id`  \n" -->
