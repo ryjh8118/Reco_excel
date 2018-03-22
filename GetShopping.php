@@ -4,7 +4,7 @@ include("PDO_class.php");
 include("mysql_program.php");
 	$mysqldb = new PDOsetting; //連線建立物件
 	$mysql_program = new datasheet;  //SQL查詢
-	//error_reporting(0);  //隱藏所有錯誤訊息
+	error_reporting(0);  //隱藏所有錯誤訊息
 	// echo '<font face="微軟正黑體">';
 			$shopping="SELECT market_member.name as peoplename,fproduct.name, qibill.orderID,qibill.bill
 						  From ifarm_toa.qibill,ifarm_toa.qibilldetail,ifarm_toa.fproduct,ifarm_toa.market_member
@@ -43,9 +43,9 @@ include("mysql_program.php");
 				
 			} 
 			//陣列隨機亂數
-			echo $row['peoplename'].'你好，上次購買的';
+			echo '我印象中記得你上次有購買';
 			print_r(array_rand($product,1));
-			echo '喜歡的話可以再來買唷';
+			echo '如果喜歡的話可以再來買唷';
 			
 
 ?>
