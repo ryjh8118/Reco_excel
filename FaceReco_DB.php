@@ -37,7 +37,6 @@ include("mysql_program.php");
 				$utf8= '<?php
 					header("Content-Type:text/html; charset=utf-8");?>';
 				fwrite($myfile,$utf8.$name);
-						//////////////////////////////////////////////////////////////////////////////////
 			}
     
 		fclose($myfile);
