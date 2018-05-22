@@ -1,2 +1,2 @@
 <?php
-					header("Content-Type:text/html; charset=utf-8");?>練習生75
+					header("Content-Type:text/html; charset=utf-8");?>練習生59
