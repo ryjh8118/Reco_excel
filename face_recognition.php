@@ -2,31 +2,29 @@
 // ini_set("error_reporting","E_ALL & ~E_NOTICE");
 include("PDO_class.php");
 include("mysql_program.php");
+
+	function thre($le,$confidence,$thresholds){
+			if ($confidence<$thresholds["1e-".$le])
+				return 0;
+			else
+				return 1; 
+		}
+
+
 	$mysqldb = new PDOsetting; //連線建立物件
 	$mysql_program = new datasheet;  //SQL查詢
 	// error_reporting(0);  //隱藏所有錯誤訊息
-	$robot_facetoken=$_GET['face_token'];
-	// $robot_confidence=' 55.165';
-	$thresholdsjson=$_GET['thresholdsjson'];
-	$resultjson=$_GET['resultjson'];
-	var_dump(json_decode($thresholdsjson, true));
-	// var_dump($thresholdsjson);
-	echo "<br><br>";
-	var_dump(json_decode($resultjson, true));
-	echo "<br><br><br><br><br><br><br>";
-
-	foreach ($thresholdsjson as $key => $value) {
-    	echo "Array: $key, $value
-		\n";
-	}
-
+	$thresholds=json_decode($_GET['thresholdsjson'], true);
+	$result=json_decode($_GET['resultjson'], true);
+	$Threarray=array();
+ // $array=$thresholds["1e-4"]."<br>";
 	
-		// echo $resultjson[];
+	$confidence=$result[0]["confidence"];
+	// $confidence=70.123;
+	$robot_facetoken=$result[0]["face_token"];
 
 
-
-
-	echo '<center><table border="10" width=500 ><td><center><font face="微軟正黑體">';
+	// echo '<center><table border="10" width=500 ><td><center><font face="微軟正黑體">';
 
 			$facedeta="
 			SELECT `person_list`.`person_id`,`person_list`.`person_name`,`face_token`.`face_token` 
@@ -42,17 +40,23 @@ include("mysql_program.php");
 
 			// echo $row['person_name']."：".$row['face_token']."<br>";
 			 // while($row = $result->fetch(PDO::FETCH_ASSOC)){
-				 echo $row['person_name'].'<br>'.$row['face_token'];
+				 // echo $row['person_name'].'<br>'.$row['face_token'];
 			// }
-?>
+			for ($i=0;$i<3;$i++){
+				$j=3+$i;
+				$Threarray[$i+3]= thre($i+3,$confidence,$thresholds);
+				// echo '<br>閥值'.$j.' : '.$Threarray[$i+3]= thre($i+3,$confidence,$thresholds);
+			}
 
-<body>
-	<br>
-	<form>
-		
- 		</center></td></table></center>
-	</form>
+			if($Threarray[4]==1)
+				echo $row['person_name'];
+			else
+				echo '0';
+			
+
+
+?>
 	
 
-</body>
+
 
