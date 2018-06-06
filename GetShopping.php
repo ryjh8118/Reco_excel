@@ -43,9 +43,17 @@ include("mysql_program.php");
 				
 			} 
 			//陣列隨機亂數
-			echo '我印象中記得你上次有購買';
-			print_r(array_rand($product,1));
-			echo '如果喜歡的話可以再來買唷';
+
+			if ($product!=NULL){
+				echo '我印象中記得你上次有購買';
+				print_r(array_rand($product,1));
+				echo '如果喜歡的話可以再來買唷';
+			}else{
+				echo '你好像還沒買過我們超市的東西';
+			}
+			// var_dump($product);
+
+
 			
 
 ?>
