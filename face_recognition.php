@@ -51,7 +51,7 @@ include("mysql_program.php");
 			if($Threarray[4]==1)
 				echo $row['person_name'];
 			else
-				echo '0';
+				echo '';
 			
 
 
