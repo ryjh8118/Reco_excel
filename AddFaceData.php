@@ -20,8 +20,13 @@ include("mysql_program.php");
 	// var_dump($row);
 
 //   丟姓名撈資料 假如無資料 直接新增
-	if ($row==FALSE){
-		$sql_add = "INSERT INTO `face_reco`.`person_list`(`person_name`) VALUES ('$name')";
+	if ($row==FALSE){  //VALUES ('$name')";
+		$sql_add = "INSERT INTO `face_reco`.`person_list`(`person_name`) 
+					SELECT '$name'
+					WHERE NOT EXISTS (
+									SELECT 1
+									From  `face_reco`.`person_list`
+									WHERE `person_name`='$name')";
 		$mysqldb->sql_link()->query($sql_add);   
 		// echo '無這個人，新增成功<br>';
 
@@ -33,7 +38,11 @@ include("mysql_program.php");
 		// perid  $row['person_id']
 		$person_id=$row['person_id'];
 		$sql_add = "INSERT INTO `face_reco`.`face_token`(`person_id`,`face_token`) 
-					VALUES ('$person_id','$facetoken')";
+					SELECT '$person_id','$facetoken'
+					WHERE NOT EXISTS (
+									SELECT 1
+									From  `face_reco`.`face_token`
+									WHERE `person_id`='$person_id')";
 		$mysqldb->sql_link()->query($sql_add);
 		// echo '新增一組facetoken 共1組 <br>新增成功';
 		echo '恭喜你成為我們的一員';
@@ -51,8 +60,14 @@ include("mysql_program.php");
 		$row = $result->fetch(PDO::FETCH_ASSOC);
 		// perid  $row['person_id']
 		$person_id=$row['person_id'];
+
+		// 防止重複新增
 		$sql_add = "INSERT INTO `face_reco`.`face_token`(`person_id`,`face_token`) 
-					VALUES ('$person_id','$facetoken')";
+					SELECT '$person_id','$facetoken'
+					WHERE NOT EXISTS (
+									SELECT 1
+									From  `face_reco`.`face_token`
+									WHERE `person_id`='$person_id')";
 		$mysqldb->sql_link()->query($sql_add);
 		// echo '共有多組facetoken <br>新增成功';
 	}
