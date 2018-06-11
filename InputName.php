@@ -19,9 +19,9 @@
 	
 	    <label for="name">請輸入姓名：</label>　
 	<input type="text" id="name" name="name">
-
+	<br><br><br><br>
 	<input type="submit" name="enter" id="enter" 
-		value="submit" onclick=success()>
+		value="確認" style="width:120px;height:40px;font-size:20px;" onclick=success()>
 	</form>
 	
 </body>
