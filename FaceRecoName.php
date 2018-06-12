@@ -6,7 +6,7 @@
 	$cleanup = 0;
 	$name = $_GET['name'];
 	//echo $name;
-
+	echo '<center><table border="10" width=300 ><td><center><font face="微軟正黑體">';
 	$myfile = fopen("GetFaceName.txt", "w") or die("Unable to open file!");
 	fwrite($myfile, $name);
 	if ($cleanup == 1){
