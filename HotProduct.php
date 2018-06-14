@@ -15,6 +15,7 @@ include("mysql_program.php");
 						  					
 			$result=$mysqldb->sql_link()->query($hotproduct);   
 			while ($row = $result->fetch(PDO::FETCH_ASSOC) )//抓到的所有值
+			// var_dump($row);
 			{	
 				
 				if (strpos($row['name'],'調整')!=false or strpos($row['name'],'折') !=false 
@@ -28,7 +29,7 @@ include("mysql_program.php");
 
 			} 
 			//陣列隨機亂數
-			echo '我們最熱賣的是';
+			// echo '我們最熱賣的是';
 			// var_dump($product);
 			print_r(array_rand($product,1));
 			

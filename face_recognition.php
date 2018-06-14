@@ -43,11 +43,11 @@ include("mysql_program.php");
 				 // echo $row['person_name'].'<br>'.$row['face_token'];
 			// }
 			for ($i=0;$i<3;$i++){
-				$j=3+$i;
+				// $j=3+$i;
 				$Threarray[$i+3]= thre($i+3,$confidence,$thresholds);
 				// echo '<br>閥值'.$j.' : '.$Threarray[$i+3]= thre($i+3,$confidence,$thresholds);
 			}
-
+			// echo '<BR>T:'.$Threarray[4];
 			if($Threarray[4]==1)
 				echo $row['person_name'];
 			else
