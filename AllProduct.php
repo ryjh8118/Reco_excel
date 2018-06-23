@@ -26,7 +26,7 @@ include("mysql_program.php");
 			// echo '我們的巴台有賣';
 
 
-			print_r(array_rand($product,1));
+			print_r($product);
 			// if ($_GET['ask_sortid']==9)
 			// 	echo '是新鮮水果現打的香濃好喝';
 			// else

@@ -31,7 +31,7 @@ include("mysql_program.php");
 			//陣列隨機亂數
 			// echo '我們最熱賣的是';
 			// var_dump($product);
-			print_r(array_rand($product,1));
+			print_r($product);
 			
 			
 
